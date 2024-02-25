@@ -63,7 +63,7 @@ public class BookController {
     }
 
     @DeleteMapping("/book/{isbn}")
-    public void deleteBook(@PathVariable("isbn") String isbn) {
+    public void deleteBook(@PathVariable String isbn) {
         service.deleteBook(isbn);
     }
 
@@ -83,7 +83,7 @@ public class BookController {
     }
 
     @GetMapping("/author/{name}")
-    public AuthorResponse getAuthor(@PathVariable("name") String name) {
+    public AuthorResponse getAuthor(@PathVariable String name) {
         return AuthorResponse.from(service.getAuthor(name).orElse(new Author()));
     }
 

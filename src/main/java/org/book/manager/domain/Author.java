@@ -1,7 +1,6 @@
 package org.book.manager.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "author")
 public class Author {
 
@@ -25,12 +23,14 @@ public class Author {
     private Set<Book> booksList;
 
     @Column(name = "rating")
-    private double averageRating;
+    private double rating;
 
     public Author(String name, double rating) {
         this.name = name;
         DecimalFormat df = new DecimalFormat("#.##");
         rating = Double.isNaN(rating) ? 0.0 : rating;
-        averageRating = averageRating == 0.0 && rating != 0.0 ? rating : Double.parseDouble(df.format(averageRating + rating / 2));
+        this.rating = this.rating == 0.0 && rating != 0.0
+                ? rating
+                : Double.parseDouble(df.format(this.rating + rating / 2));
     }
 }

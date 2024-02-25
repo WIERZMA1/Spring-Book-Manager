@@ -13,7 +13,7 @@ public record AuthorResponse(
         return new AuthorResponse(
                 author.getName(),
                 author.getBooksList().stream().map(Book::getId).collect(Collectors.toSet()),
-                author.getAverageRating()
+                author.getRating()
         );
     }
 
