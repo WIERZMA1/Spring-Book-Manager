@@ -42,9 +42,13 @@ public record BookResponse(
     }
 
     public static Book to(BookResponse bookDto) {
-        Set<Author> authors = bookDto.authorsIds.stream().map(a ->
-                new Author(a, bookDto.rating)).collect(Collectors.toSet());
-        Set<Category> categories = bookDto.categoriesIds.stream().map(Category::new).collect(Collectors.toSet());
+        Set<Author> authors = bookDto.authorsIds.stream()
+                .map(a -> new Author(a, bookDto.rating))
+                .collect(Collectors.toSet());
+        Set<Category> categories = bookDto.categoriesIds.stream()
+                .map(String::toLowerCase)
+                .map(Category::new)
+                .collect(Collectors.toSet());
         return new Book(
                 bookDto.id,
                 bookDto.title,

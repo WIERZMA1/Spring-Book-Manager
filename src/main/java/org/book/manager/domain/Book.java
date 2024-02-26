@@ -55,8 +55,8 @@ public class Book {
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "books_authors",
-            joinColumns = @JoinColumn(name = "author_name"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_name")
     )
     private Set<Author> authors;
 
@@ -64,8 +64,8 @@ public class Book {
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "books_categories",
-            joinColumns = @JoinColumn(name = "category_name"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_name")
     )
     private Set<Category> categories;
 }
